@@ -1,0 +1,5 @@
+[Name: John]
+[Items: .Health Potion.]
+[Quests: .Kill the Goblins.]
+[Description: I'm just here to forget why I came in...]
+[end]

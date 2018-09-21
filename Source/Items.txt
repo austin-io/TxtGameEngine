@@ -1,0 +1,3 @@
+[Name: Health Potion]
+[Description: Heals 20 hit points.]
+[end]

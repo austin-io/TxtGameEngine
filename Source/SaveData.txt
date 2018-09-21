@@ -1,0 +1,8 @@
+[Name: Percival Fredrickstien Von Musel Klowalski De Rolo III]
+[Strength: 10]
+[Dexterity: 15]
+[Constitution: 11]
+[Charisma: 8]
+[Wisdom: 13]
+[Intelligence: 8]
+[end]

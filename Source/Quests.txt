@@ -1,0 +1,4 @@
+[Name: Kill the Goblins]
+[Description: Kill 3 goblins's.]
+[Requirements: ]
+[end]
