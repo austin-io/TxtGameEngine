@@ -2,26 +2,16 @@
 
 txt::Game::Game(bool isRunning){
     this->m_IsRunning = isRunning;
-    //this->m_Commands.push_back(std::make_pair("help", &Game::m_Help));
-    //this->m_Commands.push_back(std::make_pair("exit", &quitGame));
+    this->m_Commands.insert(std::make_pair("help", &Game::m_Help));
+    this->m_Commands.insert(std::make_pair("exit", &Game::m_Quit));
 }
 
 txt::Game::~Game(){}
 
 void txt::Game::update(){
-    std::string choice;
 
     while(this->getIsRunning()){
-        choice = valid<std::string>();
-        
-        if(choice == "exit"){
-            this->setIsRunning(false);
-        } else if(choice == "help"){
-            std::cout << "Here's a list of commands you can do:\n"
-            "-help    Displays this help page\n"
-            "-exit    Quits the game without saving\n";
-        }
-
+        Game::m_Input();
     }
 
 }
@@ -44,6 +34,24 @@ void txt::Game::loadLocations(std::string s){
 
 void txt::Game::loadCreatures(std::string s){
     this->loadFile<Creature>(s, this->m_Creatures);
+}
+
+void txt::Game::m_Input(){
+    
+    std::string choice = valid<std::string>(""); // Get input string
+    
+    auto command = this->m_Commands.find(choice); // Iterator for hash map
+    
+    // Checks if the users choice is within the hash map
+    if(this->m_Commands.find(choice) == this->m_Commands.end()){
+        // If the users choice is not found
+        Game::m_Help(""); // Displays help page
+
+    } else{
+        // If the users input string is found it runs the associated function
+        (this->*(command->second))("");
+
+    }
 }
 
 template <typename T>
@@ -69,6 +77,16 @@ void txt::Game::loadFile(std::string s, std::vector<T>& data){
     }
 
     input.close();
+}
+
+void txt::Game::m_Help(std::string args){
+    std::cout << "Here's a list of Commands you can do:\n"
+                 "  help    Displays this help page\n"
+                 "  exit    Quits game without saving\n";
+}
+
+void txt::Game::m_Quit(std::string args){
+    Game::setIsRunning(false);
 }
 
 /*

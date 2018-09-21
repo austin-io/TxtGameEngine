@@ -20,7 +20,7 @@ protected:
     std::vector<Location> m_Locations;
     std::vector<Creature> m_Creatures;
 
-    std::vector<std::pair<std::string, void(Game::*)()> > m_Commands;
+    std::map<std::string, void(Game::*)(std::string)> m_Commands;
 
     bool m_IsRunning;
 
@@ -28,8 +28,11 @@ protected:
     template <typename T>
     void loadFile(std::string, std::vector<T>&);
 
+    void m_Input();
+
     // Methods that are pointed to by m_Commands
-    void m_Help();
+    void m_Help(std::string);
+    void m_Quit(std::string);
 
 public:
     Game(bool);
@@ -49,7 +52,6 @@ public:
     std::string* getNames(std::string, std::string*);
     std::string* getElements(std::string, std::string*);
     std::string* getValue(std::string, std::string*);
-
     //*/
 
     // Getters
