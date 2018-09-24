@@ -1,10 +1,4 @@
-/**
-*
-*   Austin Poberezhnik ~ alias@gmail.com
-*   
-*   TxtGameEngine
-*
-*/
+//  This file is not a part of the TxtGameEngine.
 
 // TODO
 /**  1. Implement parsing data strings functions:
@@ -13,7 +7,7 @@
 *    	- Compare name to attributes
 *    	- Regex dot match or value match depending on the name
 *
-*    2. Create input function that uses the Game::m_Commands list in TxtGameEngine/TxtGameEngine.h (also change the valid template function from TxtGameEngine/Utils.h to get and entire line instead of one word at a time)
+*    2. (DONE) Create input function that uses the Game::m_Commands list in TxtGameEngine/TxtGameEngine.h (also change the valid template function from TxtGameEngine/Utils.h to get and entire line instead of one word at a time)
 *
 *    3. Crap ton of Getters and Setters needed in all classes
 *

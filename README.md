@@ -24,4 +24,4 @@ Contained within the Source/ folder of this repository is a list of example .txt
 
 ## License
 
-This project with be licensed under the GNU General Public License.
+This project is Copyrighted (C) 2018, and licensed under the GNU General Public License version 3.0.
