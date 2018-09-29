@@ -59,18 +59,29 @@ void txt::Game::loadCreatures(std::string s){
 
 void txt::Game::m_Input(){
     
-    std::string choice = valid<std::string>(""); // Get input string
+    //std::string choice = valid<std::string>(""); // Get input string
+    std::stringstream strStream;
+    std::string choice;
+    std::string choiceString;
     
+    std::cout << "> ";
+    getline(std::cin, choiceString);
+
+    strStream << choiceString;
+    strStream >> choice;
+    getline(strStream, choiceString);
+
     auto command = this->m_Commands.find(choice); // Iterator for hash map
     
     // Checks if the users choice is within the hash map
-    if(this->m_Commands.find(choice) == this->m_Commands.end()){
+    if(command == this->m_Commands.end()){
         // If the users choice is not found
-        Game::m_Help(""); // Displays help page
+	    std::cout << "That command doesn't work!\n"
+		      << "Type \"help\" to see a list of options\n";
 
     } else{
         // If the users input string is found it runs the associated function
-        (this->*(command->second))("");
+        (this->*(command->second))(choiceString);
 
     }
 }

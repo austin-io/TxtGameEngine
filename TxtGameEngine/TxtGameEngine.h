@@ -27,6 +27,7 @@
 #include <map>
 #include <fstream>
 #include <regex>
+#include <sstream>
 
 #include "Entity.h"
 #include "Creature.h"
