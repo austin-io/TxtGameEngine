@@ -70,7 +70,7 @@ public:
 
     //*
     // Regex Getters
-    std::string* getTags(std::string, std::string*);
+    void getTags(std::string, std::string*&);
     std::string* getNames(std::string, std::string*);
     std::string* getElements(std::string, std::string*);
     std::string* getValue(std::string, std::string*);
