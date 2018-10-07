@@ -37,7 +37,7 @@ int main() {
     txt::Game* game = new txt::Game(true);
     std::string* t = new std::string[10];
     
-    game->getTags("[name: bob][lvl: 14]caagv[e]", t);
+    game->getRegexMatches("(\\[[^\\]]+:[^\\]]+\\])", "[name: bob][lvl: 14]caagv[e]", t);
     
     std::cout << "t[0] = " << t[0] << std::endl;
 

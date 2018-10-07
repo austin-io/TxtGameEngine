@@ -19,8 +19,8 @@
 *
 */
 
-#include "Spell.h"
+#include "TxtGameEngine.h"
 
-Spell::Spell(){}
+txt::Game::Spell::Spell(){}
 
-Spell::~Spell(){}
+txt::Game::Spell::~Spell(){}

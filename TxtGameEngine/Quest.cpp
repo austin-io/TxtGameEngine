@@ -19,8 +19,8 @@
 *
 */
 
-#include "Quest.h"
+#include "TxtGameEngine.h"
 
-Quest::Quest(){}
+txt::Game::Quest::Quest(){}
 
-Quest::~Quest(){}
+txt::Game::Quest::~Quest(){}

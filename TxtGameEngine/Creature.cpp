@@ -19,14 +19,14 @@
 *
 */
 
-#include "Creature.h"
+#include "TxtGameEngine.h"
 
-Creature::Creature(){}
+txt::Game::Creature::Creature(){}
 
-Creature::Creature(std::string dataString){
+txt::Game::Creature::Creature(std::string dataString){
     std::cout << "> Creature created.\n" << dataString 
               << "\n--------------------------------------------------------\n";
     //std::regex mainSets("\[\w\]");
 }
 
-Creature::~Creature(){}
+txt::Game::Creature::~Creature(){}

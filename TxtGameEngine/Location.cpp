@@ -19,18 +19,22 @@
 *
 */
 
-#include "Location.h"
+#include "TxtGameEngine.h"
 
-Location::Location(){}
+txt::Game::Location::Location(){}
 
-Location::Location(std::string dataString){
+txt::Game::Location::Location(std::string dataString){
     std::cout << "> Location created.\n" << dataString 
               << "\n--------------------------------------------------------\n";
+    std::string regTags = "(\\[[^\\]]*:[^\\]]*\\])",
+                regNames = "([^:\\[\\]]*):",
+                regValues = ":\\s([^\\]]*)",
+                regDots = "\\.([^.\\]]*)";
 
 }
 
-Location::Location(bool hostile, std::string name, std::string description,std::vector<Entity> npcs, std::vector<Location> connected){
+txt::Game::Location::Location(bool hostile, std::string name, std::string description,std::vector<Game::Entity> npcs, std::vector<Game::Location> connected){
 
 }
 
-Location::~Location(){}
+txt::Game::Location::~Location(){}

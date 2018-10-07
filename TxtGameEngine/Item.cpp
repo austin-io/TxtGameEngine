@@ -19,8 +19,8 @@
 *
 */
 
-#include "Item.h"
+#include "TxtGameEngine.h"
 
-Item::Item(){}
+txt::Game::Item::Item(){}
 
-Item::~Item(){}
+txt::Game::Item::~Item(){}

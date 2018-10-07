@@ -19,10 +19,10 @@
 *
 */
 
-#include "Character.h"
+#include "TxtGameEngine.h"
 
-Character::Character(){}
+txt::Game::Character::Character(){}
 
-Character::~Character(){}
+txt::Game::Character::~Character(){}
 
-void Character::levelUp(){}
+void txt::Game::Character::levelUp(){}

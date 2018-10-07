@@ -50,11 +50,11 @@ void txt::Game::setIsRunning(bool isRunning){
 }
 
 void txt::Game::loadLocations(std::string s){
-    this->loadFile<Location>(s, this->m_Locations);
+    this->loadFile<Game::Location>(s, this->m_Locations);
 }
 
 void txt::Game::loadCreatures(std::string s){
-    this->loadFile<Creature>(s, this->m_Creatures);
+    this->loadFile<Game::Creature>(s, this->m_Creatures);
 }
 
 void txt::Game::m_Input(){
@@ -121,21 +121,15 @@ void txt::Game::m_Quit(std::string args){
     Game::setIsRunning(false);
 }
 
-void txt::Game::getTags(std::string dataString, std::string* &matchedStrings){
-    
-    std::regex reg("(\\[[^\\]]*:[^\\]]*\\])");
+void txt::Game::getRegexMatches(std::string regexStr, std::string dataString, std::string* &matchedStrings){
+    std::regex reg(regexStr);
     std::smatch matches;
-    
-    std::sregex_iterator CurrentMatch(dataString.begin(), dataString.end(), reg),
-                         LastMatch;
+    std::sregex_iterator CurrentMatch(dataString.begin(), dataString.end(), reg), LastMatch;
     int i = 0;
-    
     while(CurrentMatch != LastMatch){
         matches = *CurrentMatch;
         matchedStrings[i] = matches.str(1);
-        
         std::cout << "Regex: " << matchedStrings[i] << std::endl;
-        
         CurrentMatch++;
         i++;
     }
