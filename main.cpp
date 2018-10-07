@@ -38,7 +38,7 @@ int main() {
     std::string* t = new std::string[10];
     
     game->getRegexMatches("(\\[[^\\]]+:[^\\]]+\\])", "[name: bob][lvl: 14]caagv[e]", t);
-    
+    txt::Game::Location local("[Name: HELL]");
     std::cout << "t[0] = " << t[0] << std::endl;
 
     game->loadCreatures("Source/Creatures.txt");
