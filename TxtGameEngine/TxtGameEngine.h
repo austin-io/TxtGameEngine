@@ -19,20 +19,23 @@
 *
 */
 
-#ifndef TXTGAMEENGINE_H
-#define TXTGAMEENGINE_H
-
+/*
 #include <iostream>
 #include <vector>
 #include <map>
 #include <fstream>
 #include <regex>
 #include <sstream>
+*/
 
+#include "pch.h"
+#include "Utils.h"
 #include "Entity.h"
 #include "Creature.h"
 #include "Location.h"
-#include "Utils.h"
+
+#ifndef TXTGAMEENGINE_H
+#define TXTGAMEENGINE_H
 
 namespace txt{
 
@@ -67,14 +70,6 @@ public:
     void loadSaveData(std::string);
     void loadLocations(std::string);
     void loadCreatures(std::string);
-
-    //*
-    // Regex Getters
-    void getTags(std::string, std::string*&);
-    std::string* getNames(std::string, std::string*);
-    std::string* getElements(std::string, std::string*);
-    std::string* getValue(std::string, std::string*);
-    //*/
 
     // Getters
     bool getIsRunning();

@@ -120,24 +120,3 @@ void txt::Game::m_Help(std::string args){
 void txt::Game::m_Quit(std::string args){
     Game::setIsRunning(false);
 }
-
-void txt::Game::getTags(std::string dataString, std::string* &matchedStrings){
-    
-    std::regex reg("(\\[[^\\]]*:[^\\]]*\\])");
-    std::smatch matches;
-    
-    std::sregex_iterator CurrentMatch(dataString.begin(), dataString.end(), reg),
-                         LastMatch;
-    int i = 0;
-    
-    while(CurrentMatch != LastMatch){
-        matches = *CurrentMatch;
-        matchedStrings[i] = matches.str(1);
-        
-        std::cout << "Regex: " << matchedStrings[i] << std::endl;
-        
-        CurrentMatch++;
-        i++;
-    }
-
-}

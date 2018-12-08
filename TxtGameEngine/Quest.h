@@ -22,7 +22,7 @@
 #ifndef QUEST_H
 #define QUEST_H
 
-#include <iostream>
+#include "pch.h"
 
 class Quest{
 protected:

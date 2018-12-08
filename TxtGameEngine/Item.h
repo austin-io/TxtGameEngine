@@ -22,7 +22,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include <string>
+#include "pch.h"
 
 class Item {
 protected:

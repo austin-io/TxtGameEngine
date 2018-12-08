@@ -22,10 +22,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include <iostream>
-#include <vector>
-#include <regex>
-
+#include "pch.h"
 #include "Spell.h"
 #include "Item.h"
 

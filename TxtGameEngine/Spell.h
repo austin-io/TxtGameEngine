@@ -22,7 +22,7 @@
 #ifndef SPELL_H
 #define SPELL_H
 
-#include <string>
+#include "pch.h"
 
 class Spell {
 protected:

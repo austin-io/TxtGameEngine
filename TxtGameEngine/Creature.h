@@ -22,6 +22,7 @@
 #ifndef CREATURE_H
 #define CREATURE_H
 
+#include "pch.h"
 #include "Entity.h"
 
 class Creature : public Entity {

@@ -19,22 +19,19 @@
 *
 */
 
-#pragma once
+#ifndef UTILS_H
+#define UTILS_H
+
+#include "pch.h"
 
 template <typename Value = int>
-Value valid(std::string phrase = "") {
-	Value input;
+Value valid(std::string phrase = "");
 
-	std::cout << phrase << "> ";
-	std::cin >> input;
-	while (std::cin.fail()) {
-		std::cin.clear();
-		std::cin.ignore(9999999999, '\n');
-		std::cout << "That input doesn't work! Try again \n";
-		std::cout << phrase << "> ";
-		std::cin >> input;
-	}
-	std::cin.ignore(9999999999, '\n');
+void getRegexMatch(std::string regexStr, std::string dataString, std::string* &matchedStrings);
 
-	return input;
-}
+template<typename T>
+void storeData(std::map<std::string, T> &mapData, std::string tagName, std::string dataStr);
+
+void storeData(std::map<std::string, std::string> &mapData, std::string tagName, std::string dataStr);
+
+#endif

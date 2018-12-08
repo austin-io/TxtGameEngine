@@ -22,6 +22,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+#include "pch.h"
 #include "Entity.h"
 
 class Character : public Entity {

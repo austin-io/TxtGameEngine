@@ -22,9 +22,7 @@
 #ifndef LOCATION_H
 #define LOCATION_H
 
-#include <iostream>
-#include <vector>
-
+#include "pch.h"
 #include "Entity.h"
 
 class Location {
@@ -35,7 +33,7 @@ protected:
     std::string m_Description;
 
     std::vector<Entity> m_Npcs;
-    std::vector<Location> m_ConnectedAreas;
+    std::vector<std::string> m_ConnectedAreas;
 
 public:
     // Default constructor
@@ -45,7 +43,7 @@ public:
     Location(std::string); 
     
     // Full constructor
-    Location(bool hostile, std::string name, std::string description,std::vector<Entity> npcs, std::vector<Location> connected);
+    Location(bool hostile, std::string name, std::string description,std::vector<Entity> npcs, std::vector<std::string> connected);
     
     virtual ~Location();
     
