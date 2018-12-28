@@ -42,8 +42,8 @@ namespace txt{
 class Game{
 protected:
     // Member Variables
-    std::vector<Location> m_Locations;
-    std::vector<Creature> m_Creatures;
+    std::vector<Location*> m_Locations;
+    std::vector<Creature*> m_Creatures;
 
     std::map<std::string, void(Game::*)(std::string)> m_Commands;
 
@@ -51,7 +51,7 @@ protected:
 
     // Private Methods
     template <typename T>
-    void loadFile(std::string, std::vector<T>&);
+    void loadFile(std::string, std::vector<T*>&);
 
     void m_Input();
 

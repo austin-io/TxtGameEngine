@@ -87,9 +87,9 @@ void txt::Game::m_Input(){
 }
 
 template <typename T>
-void txt::Game::loadFile(std::string s, std::vector<T>& data){
+void txt::Game::loadFile(std::string s, std::vector<T*>& data){
     std::ifstream input;
-
+    
     std::string tempString = "";
     std::string dataString = "";
 
@@ -101,7 +101,7 @@ void txt::Game::loadFile(std::string s, std::vector<T>& data){
             if(tempString != "[end]"){
                 dataString += tempString;
             } else {
-                data.push_back(dataString);
+                data.push_back(new T(dataString));
                 dataString = "";
             }
 

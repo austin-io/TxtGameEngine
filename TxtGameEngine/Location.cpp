@@ -25,22 +25,30 @@
 Location::Location(){}
 
 Location::Location(std::string dataString){
-    std::cout << "> Location created.\n" << dataString 
-              << "\n--------------------------------------------------------\n";
-
-    std::string* tagMatches = new std::string[5];
+       
+    const int NUMBER_OF_VARS = 5;
     
-    getRegexMatch("(\\[[^\\]]+:[^\\]]+\\])", dataString, tagMatches);
+    std::string* tagMatches = new std::string[NUMBER_OF_VARS];
+    std::string* valueMatches = new std::string[NUMBER_OF_VARS];
+    
+    getRegexMatch("([^:\\[\\]]+):", dataString, tagMatches);
+    getRegexMatch(":\\s([^\\]]+)", dataString, valueMatches);
 
     std::map<std::string, std::string> stringLinks;
     stringLinks.insert(std::make_pair("Name", this->m_Name));
     stringLinks.insert(std::make_pair("Description", this->m_Description));
     
+    for(int i = 0; i < NUMBER_OF_VARS; i++){
+        storeData(stringLinks, tagMatches[i], valueMatches[i]);
+    }
+
+    std::cout << "Location Created Successfully.\n--------------------------------------------------------\n"; 
 
     delete[] tagMatches;
+    delete[] valueMatches;
 }
 
-Location::Location(bool hostile, std::string name, std::string description,std::vector<Entity> npcs, std::vector<std::string> connected){
+Location::Location(bool hostile, std::string name, std::string description,std::vector<Entity*> npcs, std::vector<std::string> connected){
 
 }
 
