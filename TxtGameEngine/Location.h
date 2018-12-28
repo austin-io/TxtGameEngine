@@ -32,7 +32,7 @@ protected:
     std::string m_Name; 
     std::string m_Description;
 
-    std::vector<Entity> m_Npcs;
+    std::vector<std::string> m_Npcs;
     std::vector<std::string> m_ConnectedAreas;
 
 public:
@@ -43,7 +43,7 @@ public:
     Location(std::string); 
     
     // Full constructor
-    Location(bool hostile, std::string name, std::string description,std::vector<Entity> npcs, std::vector<std::string> connected);
+    Location(bool hostile, std::string name, std::string description,std::vector<std::string> npcs, std::vector<std::string> connected);
     
     virtual ~Location();
     
