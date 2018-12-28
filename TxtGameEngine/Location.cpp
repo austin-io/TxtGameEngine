@@ -48,9 +48,7 @@ Location::Location(std::string dataString){
     delete[] valueMatches;
 }
 
-
 Location::Location(bool hostile, std::string name, std::string description,std::vector<std::string> npcs, std::vector<std::string> connected){
-
 
 }
 
