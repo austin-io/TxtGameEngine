@@ -21,15 +21,17 @@
 
 #include "TxtGameEngine.h"
 
-txt::Game::Game(bool isRunning){
+namespace txt {
+
+Game::Game(bool isRunning){
     this->m_IsRunning = isRunning;
     this->m_Commands.insert(std::make_pair("help", &Game::m_Help));
     this->m_Commands.insert(std::make_pair("exit", &Game::m_Quit));
 }
 
-txt::Game::~Game(){}
+Game::~Game(){}
 
-void txt::Game::update(){
+void Game::update(){
 
     while(this->getIsRunning()){
         Game::m_Input();
@@ -37,27 +39,27 @@ void txt::Game::update(){
 
 }
 
-void txt::Game::loadSaveData(std::string s){
+void Game::loadSaveData(std::string s){
 
 }
 
-bool txt::Game::getIsRunning(){
+bool Game::getIsRunning(){
     return this->m_IsRunning;
 }
 
-void txt::Game::setIsRunning(bool isRunning){
+void Game::setIsRunning(bool isRunning){
     this->m_IsRunning = isRunning;
 }
 
-void txt::Game::loadLocations(std::string s){
+void Game::loadLocations(std::string s){
     this->loadFile<Location>(s, this->m_Locations);
 }
 
-void txt::Game::loadCreatures(std::string s){
+void Game::loadCreatures(std::string s){
     this->loadFile<Creature>(s, this->m_Creatures);
 }
 
-void txt::Game::m_Input(){
+void Game::m_Input(){
     
     //std::string choice = valid<std::string>(""); // Get input string
     std::stringstream strStream;
@@ -87,7 +89,7 @@ void txt::Game::m_Input(){
 }
 
 template <typename T>
-void txt::Game::loadFile(std::string s, std::vector<T*>& data){
+void Game::loadFile(std::string s, std::vector<T*>& data){
     std::ifstream input;
     
     std::string tempString = "";
@@ -98,25 +100,26 @@ void txt::Game::loadFile(std::string s, std::vector<T*>& data){
         std::cout << s << ": file not found.\n";
     } else {
         while(getline(input, tempString)){
-            if(tempString != "[end]"){
+            if(tempString.find("[end]") == std::string::npos){
                 dataString += tempString;
             } else {
                 data.push_back(new T(dataString));
                 dataString = "";
             }
-
         }
     }
-
+    
     input.close();
 }
 
-void txt::Game::m_Help(std::string args){
+void Game::m_Help(std::string args){
     std::cout << "Here's a list of Commands you can do:\n"
                  "  help    Displays this help page\n"
                  "  exit    Quits game without saving\n";
 }
 
-void txt::Game::m_Quit(std::string args){
+void Game::m_Quit(std::string args){
     Game::setIsRunning(false);
+}
+
 }

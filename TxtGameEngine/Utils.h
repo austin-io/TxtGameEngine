@@ -24,14 +24,52 @@
 
 #include "pch.h"
 
-template <typename Value = int>
-Value valid(std::string phrase = "");
+template <typename Value = int >
+Value valid(std::string phrase = "") {
+	Value input;
 
-void getRegexMatch(std::string regexStr, std::string dataString, std::string* &matchedStrings);
+	std::cout << phrase << "> ";
+	std::cin >> input;
+	while (std::cin.fail()) {
+		std::cin.clear();
+		std::cin.ignore(9999999999, '\n');
+		std::cout << "That input doesn't work! Try again \n";
+		std::cout << phrase << "> ";
+		std::cin >> input;
+	}
+	std::cin.ignore(9999999999, '\n');
 
-template<typename T>
-void storeData(std::map<std::string, T> &mapData, std::string tagName, std::string dataStr);
+	return input;
+}
 
-void storeData(std::map<std::string, std::string> &mapData, std::string tagName, std::string dataStr);
+template<std::size_t SIZE>
+void getRegexMatch(std::string regexStr, std::string dataString, std::array<std::string, SIZE> &matchedStrings){
+    std::regex reg(regexStr);
+    std::smatch matches;
+    std::sregex_iterator CurrentMatch(dataString.begin(), dataString.end(), reg), LastMatch;
+    for(int i = 0; CurrentMatch != LastMatch; i++){
+        matches = *CurrentMatch;
+        matchedStrings[i] = matches.str(1);
+        //std::cout << "Regex: " << matchedStrings[i] << std::endl;
+        CurrentMatch++;
+    }   
+}
+
+template<typename T >
+void storeData(std::map<std::string, T> &mapData, std::string tagName, std::string dataStr){
+    
+    std::stringstream ss(dataStr, std::ios_base::app | std::ios_base::in | std::ios_base::out);
+
+    if(mapData.find(tagName) != mapData.end()){
+        ss >> std::boolalpha >> mapData[tagName];
+        std::cout << std::boolalpha << tagName << ": " << mapData[tagName] << std::endl;
+    }
+}
+
+template<>
+void storeData<std::string>(std::map<std::string, std::string> &mapData, std::string tagName, std::string dataStr);
+
+template<>
+void storeData<std::vector<std::string> > (std::map<std::string, std::vector<std::string> > &mapData, std::string tagName, std::string dataStr);
 
 #endif

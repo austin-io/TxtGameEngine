@@ -25,30 +25,42 @@
 Location::Location(){}
 
 Location::Location(std::string dataString){
-       
+    
+    // Total number of variables in the Location class
     const int NUMBER_OF_VARS = 5;
     
-    std::string* tagMatches = new std::string[NUMBER_OF_VARS];
-    std::string* valueMatches = new std::string[NUMBER_OF_VARS];
+    // Arrays to hold all string key value pairs "tag: value"
+    std::array<std::string, NUMBER_OF_VARS> tagMatches;
+    std::array<std::string, NUMBER_OF_VARS> valueMatches;
     
+    // Find all appropriate tags and values
     getRegexMatch("([^:\\[\\]]+):", dataString, tagMatches);
     getRegexMatch(":\\s([^\\]]+)", dataString, valueMatches);
 
+    // Use std::map to connect tags to their corresponding variables
     std::map<std::string, std::string> stringLinks;
     stringLinks.insert(std::make_pair("Name", this->m_Name));
     stringLinks.insert(std::make_pair("Description", this->m_Description));
     
+    std::map<std::string, bool> boolLinks;
+    boolLinks.insert(std::make_pair("Hostile", this->m_HostileArea));
+
+    std::map<std::string, std::vector<std::string> > vectorLinks;
+    vectorLinks.insert(std::make_pair("Conected", this->m_ConnectedAreas));
+    vectorLinks.insert(std::make_pair("Npc", this->m_Npcs));
+
+    // Store all the values in the appropriate variables
     for(int i = 0; i < NUMBER_OF_VARS; i++){
-        storeData(stringLinks, tagMatches[i], valueMatches[i]);
+        storeData<std::string>(stringLinks, tagMatches[i], valueMatches[i]);
+        storeData(boolLinks, tagMatches[i], valueMatches[i]);
+        storeData<std::vector<std::string> >(vectorLinks, tagMatches[i], valueMatches[i]);
     }
 
-    std::cout << "Location Created Successfully.\n--------------------------------------------------------\n"; 
+    std::cout << "Location Created Successfully\n--------------------------------------------------------\n"; 
 
-    delete[] tagMatches;
-    delete[] valueMatches;
 }
 
-Location::Location(bool hostile, std::string name, std::string description,std::vector<std::string> npcs, std::vector<std::string> connected){
+Location::Location(bool hostile, std::string name, std::string description, std::vector<std::string> npcs, std::vector<std::string> connected){
 
 }
 

@@ -33,7 +33,7 @@
 int main() {
     
     txt::Game* game = new txt::Game(true);
-    std::string* t = new std::string[10];
+    std::array<std::string, 10> t;
     
     getRegexMatch("([^:\\[\\]]+):", "[name: bob][lvl: 14]caagv[e]", t);
 
